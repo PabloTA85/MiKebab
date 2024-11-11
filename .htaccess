@@ -1,0 +1,9 @@
+# Habilitar motor de reescritura
+#RewriteEngine On
+
+# Si el archivo o directorio solicitado no existe
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirigir todas las solicitudes a api.php
+#RewriteRule ^(.*)$ api.php [QSA,L]
