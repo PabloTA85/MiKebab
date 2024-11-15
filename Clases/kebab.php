@@ -6,11 +6,13 @@ class Kebab {
     private $tipo;
     private $precio;
 
-    public function __construct($nombre, $foto = null, $tipo = null, $precio = 0.0) {
+    // Constructor
+    public function __construct($nombre, $foto = null, $tipo = null, $precio = 0.0, $idKebab = null) {
         $this->nombre = $nombre;
         $this->foto = $foto;
         $this->tipo = $tipo;
         $this->precio = $precio;
+        $this->idKebab = $idKebab; // Asignamos el ID si se pasa como argumento
     }
 
     // Métodos getter
@@ -35,6 +37,10 @@ class Kebab {
     }
 
     // Métodos setter
+    public function setIdKebab($idKebab) {
+        $this->idKebab = $idKebab;
+    }
+
     public function setNombre($nombre) {
         $this->nombre = $nombre;
     }
@@ -52,3 +58,4 @@ class Kebab {
     }
 }
 ?>
+

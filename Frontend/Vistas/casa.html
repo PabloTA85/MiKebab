@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Kebabs Online</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="casa.css" rel="stylesheet"> <!-- Enlace al archivo CSS -->
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="../Fotos/Varias/logo.avif" alt="Logotipo de la empresa" style="height: 40px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Registrarse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="casa.html">Menú</a>
+                    </li>
+                </ul>
+                <!-- Carrito de la compra -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="carrito.html">
+                            <img src="../Fotos/Varias/carrito.png" alt="Carrito" style="height: 30px;">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Encabezado -->
+    <header>
+        <div class="container">
+            <h1>Kebabs de la Casa</h1>
+        </div>
+    </header>
+
+    <!-- Sección de productos -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Producto 1 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="../Fotos/Kebabs/KebabDeTernera.jpg" class="card-img-top kebab-image" alt="Kebab 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Kebab de Ternera</h5>
+                            <p class="card-text">Delicioso kebab de ternera, con salsa y verduras frescas.</p>
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="btn btn-modificar" data-bs-toggle="modal" data-bs-target="#modalModificar">Modificar</a>
+                                <a href="#" class="btn btn-comprar">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Producto 2 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="../Fotos/Kebabs/KebabVegetal.jpg" class="card-img-top kebab-image" alt="Kebab 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Kebab Vegetariano</h5>
+                            <p class="card-text">Kebab lleno de sabor, hecho con verduras frescas.</p>
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="btn btn-modificar">Modificar</a>
+                                <a href="#" class="btn btn-comprar">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Producto 3 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="../Fotos/Kebabs/kebabDePollo.jpg" class="card-img-top kebab-image" alt="Kebab 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Kebab de Pollo</h5>
+                            <p class="card-text">Suave pollo con un toque especial de especias.</p>
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="btn btn-modificar">Modificar</a>
+                                <a href="#" class="btn btn-comprar">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de ver más detalles -->
+    <div class="modal fade" id="modalModificar" tabindex="-1" aria-labelledby="modalModificarLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalModificarLabel">Modificar Kebab de Ternera</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4 image-container">
+                            <!-- Imagen del kebab -->
+                            <img src="../Fotos/Kebabs/KebabDeTernera.jpg"  width="100%" height="auto" alt="Kebab de Ternera" class="img-fluid">
+                        </div>
+                        <div class="col-md-8 info-container">
+                            <p class="no-editable"><strong>Nombre:</strong> Kebab de Ternera</p>
+                            <p class="no-editable"><strong>Descripción:</strong> Delicioso kebab de ternera, con salsa y verduras frescas.</p>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>Ingredientes actuales:</h5>
+                                    <ul id="currentIngredients" class="ingredient-list">
+                                        <li class="ingredient-item" draggable="true">Ternera</li>
+                                        <li class="ingredient-item" draggable="true">Lechuga</li>
+                                        <li class="ingredient-item" draggable="true">Tomate</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>Ingredientes disponibles:</h5>
+                                    <ul id="availableIngredients" class="ingredient-list">
+                                        <li class="ingredient-item" draggable="true">Cebolla</li>
+                                        <li class="ingredient-item" draggable="true">Pepinillos</li>
+                                        <li class="ingredient-item" draggable="true">Salsa</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <p class="no-editable"><strong>Precio:</strong> 6.99 €</p>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Guardar cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Kebabs de la Casa. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="casa.js"></script> <!-- Enlace al archivo JS -->
+</body>
+</html>

@@ -1,107 +1,117 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda de Kebabs Online</title>
+    <link href="Frontend/Css/index.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Reducir el tamaño del navbar */
-        nav {
-            padding-top: 5px;
-            padding-bottom: 5px; /* Reducir el padding del navbar */
-        }
-        
-        /* Ajustar el tamaño de la imagen del logo */
-        .navbar-brand img {
-            height: 40px; /* Ajustar el tamaño del logo */
-        }
-
-        /* Reducir el tamaño de los elementos del navbar */
-        .navbar-nav .nav-link {
-            font-size: 0.9rem; /* Reducir el tamaño de la fuente */
-            padding-left: 10px;
-            padding-right: 10px; /* Reducir el espacio entre los elementos */
-        }
-
-        /* Reducir el tamaño del header */
-        header {
-            padding: 10px 0; /* Reducir el padding para que ocupe menos espacio */
-            background-color: #17a2b8; /* Color de fondo del header */
-        }
-        header h1 {
-            font-size: 1.5rem; /* Reducir el tamaño de fuente del título */
-            margin: 0;
-        }
-        header p {
-            font-size: 0.9rem; /* Reducir el tamaño de fuente del subtítulo */
-            margin: 0;
-        }
-
-        /* Aplicar la imagen de fondo en section */
-        section {
-            height: calc(100vh - 180px); /* Ajustar la altura de la sección */
-            background-image: url('../Fotos/Varias/fondo1.avif'); /* Ruta de la imagen de fondo */
-            background-size: cover;
-            background-position: center;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        /* Opcional: Ajustes del footer */
-        footer {
-            background-color: #f8f9fa;
-            color: #333;
-        }
-    </style>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="../Fotos/Varias/logo.avif" alt="Logotipo de la empresa" style="height: 40px;">
+                <img src="Fotos/Varias/logo.avif" alt="Logotipo de la empresa" style="height: 40px;">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                        <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
+                        <a class="nav-link" href="javascript:void(0)" onclick="showLoginForm()">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Registrarse</a>
+                        <a class="nav-link" href="javascript:void(0)" onclick="showRegisterForm()">Registrarse</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="kebabs.html">Menú</a> <!-- Cambio aquí -->
+                        <a class="nav-link" href="./Frontend/Vistas/kebabs.html">Menú</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="carrito.html">
+                            <img src="Fotos/Varias/carrito.png" alt="Carrito" style="height: 30px;">
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <header class="text-white text-center">
-        <div class="container">
-            <h1>Bienvenidos al Kebab de Pablo</h1>
-            <p>¡Tu tienda de kebabs online favorita!</p>
-        </div>
-    </header>
+    <!-- Contenido principal -->
+    <div id="mainContent">
+        <header class="text-white text-center">
+            <div class="container">
+                <h1>Bienvenidos al Kebab de Pablo</h1>
+                <p>¡Tu tienda de kebabs online favorita!</p>
+            </div>
+        </header>
+        <section></section> <!-- Sección vacía con la imagen de fondo -->
+    </div>
 
-    <section></section> <!-- Sección vacía con la imagen de fondo -->
+    <!-- Formulario de registro -->
+    <div id="registerForm" class="container">
+        <h2 class="text-center">Formulario de Registro</h2>
+        <form id="registerFormSubmit">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="apellidos" class="form-label">Apellidos</label>
+                <input type="text" class="form-control" id="apellidos" required>
+            </div>
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="tel" class="form-control" id="telefono" required>
+            </div>
+            <div class="mb-3">
+                <label for="usuario" class="form-label">Usuario</label>
+                <input type="text" class="form-control" id="usuario" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <button type="submit" class="btn btn-custom w-100">Registrarse</button>
+            <button type="button" class="btn btn-secondary w-100 mt-2" onclick="showMainContent()">Cancelar</button>
+        </form>
+    </div>
 
-    <footer class="bg-light text-center py-4">
-        <div class="container">
-            <p>&copy; 2024 Kebabs Online. Todos los derechos reservados.</p>
-        </div>
+    <!-- Formulario de login -->
+    <div id="loginForm" class="container">
+        <h2 class="text-center">Iniciar Sesión</h2>
+        <form>
+            <div class="mb-3">
+                <label for="loginUsuario" class="form-label">Usuario</label>
+                <input type="text" class="form-control" id="loginUsuario" required>
+            </div>
+            <div class="mb-3">
+                <label for="loginPassword" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="loginPassword" required>
+            </div>
+            <button type="submit" class="btn btn-custom w-100">Iniciar Sesión</button>
+            <button type="button" class="btn btn-secondary w-100 mt-2" onclick="showMainContent()">Cancelar</button>
+        </form>
+    </div>
+
+    <footer class="bg-light text-center py-3">
+        <p>&copy; 2024 Tienda de Kebabs Online. Todos los derechos reservados.</p>
     </footer>
 
+    <script src="Frontend/Js/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

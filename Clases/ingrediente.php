@@ -1,23 +1,30 @@
 <?php
 class Ingrediente {
-    private $id;
+    private $idIngrediente;
     private $nombre;
+    private $imagen;
     private $precio;
     private $foto;
 
-    public function __construct($nombre, $precio, $foto) {
+    public function __construct($idIngrediente, $nombre, $imagen, $precio, $foto) {
+        $this->idIngrediente = $idIngrediente;
         $this->nombre = $nombre;
+        $this->imagen = $imagen;
         $this->precio = $precio;
         $this->foto = $foto;
     }
 
+
     // Métodos getter
-    public function getId() {
-        return $this->id;
+    public function getidIngrediente() {
+        return $this->idIngrediente;
     }
 
     public function getNombre() {
         return $this->nombre;
+    }
+    public function getImagen() {
+        return $this->imagen;
     }
 
     public function getPrecio() {
@@ -31,6 +38,9 @@ class Ingrediente {
     // Métodos setter
     public function setNombre($nombre) {
         $this->nombre = $nombre;
+    }
+    public function setImagen($imagen) {
+        $this->nombre = $imagen;
     }
 
     public function setPrecio($precio) {
