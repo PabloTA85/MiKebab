@@ -2,20 +2,23 @@
 
 require_once __DIR__ . '/../Helpers/gbd.php'; // Asegúrate de que la ruta sea correcta
 
-class RepoKebab {
+class RepoKebab
+{
 
     private $conexion;
 
-    public function __construct($conexion) {
+    public function __construct($conexion)
+    {
         $this->conexion = $conexion; // Asegúrate de que la conexión esté pasando correctamente
     }
 
     // Método para obtener todos los kebabs
-    public function obtenerKebabs() {
+    public function obtenerKebabs()
+    {
         global $conexion;  // Usamos la conexión global desde gbd.php
 
         try {
-            $consulta = $conexion->prepare("SELECT * FROM KEBABS");  
+            $consulta = $conexion->prepare("SELECT * FROM KEBABS");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
@@ -24,8 +27,23 @@ class RepoKebab {
         }
     }
 
+    // Metodo para obtener un kebab por id
+    public function obtenerKebabPorId($idKebab)
+    {
+        $stmt = $this->conexion->prepare("SELECT k.*, GROUP_CONCAT(ki.id_ingrediente) AS ingredientes
+                                                FROM kebab.KEBABS k
+                                                INNER JOIN KEBAB.KEBABS_INGREDIENTES ki ON k.idKebab = ki.id_kebab
+                                                 WHERE idKebab = :id
+                                                GROUP BY k.idKebab;");
+        $stmt->bindParam(':id', $idKebab, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+
     // Crear un nuevo kebab
-    public function crearKebab($nombre, $foto, $tipo, $precio, $ingredientes) {
+    public function crearKebab($nombre, $foto, $tipo, $precio, $ingredientes)
+    {
         global $conexion;  // Usamos la conexión global desde gbd.php
 
         try {
@@ -60,7 +78,8 @@ class RepoKebab {
     }
 
     // Insertar ingredientes en la relación KEBABS_INGREDIENTES
-    private function insertarIngredientes($idKebab, $ingredientes) {
+    private function insertarIngredientes($idKebab, $ingredientes)
+    {
         global $conexion;  // Usamos la conexión global desde gbd.php
         foreach ($ingredientes as $ingrediente) {
             $query = "INSERT INTO KEBABS_INGREDIENTES (id_kebab, id_ingrediente) VALUES (:idKebab, :id_ingrediente)";
@@ -72,7 +91,8 @@ class RepoKebab {
     }
 
     // Actualizar un kebab
-    public function actualizarKebab($idKebab, $nombre,  $foto, $tipo, $precio, $ingredientes) {
+    public function actualizarKebab($idKebab, $nombre, $foto, $tipo, $precio, $ingredientes)
+    {
         global $conexion;  // Usamos la conexión global desde gbd.php
         try {
             // Verificar si el kebab existe
@@ -104,7 +124,8 @@ class RepoKebab {
     }
 
     // Actualizar los ingredientes de un kebab
-    private function actualizarIngredientes($idKebab, $ingredientes) {
+    private function actualizarIngredientes($idKebab, $ingredientes)
+    {
         global $conexion;  // Usamos la conexión global desde gbd.php
         // Eliminar ingredientes anteriores
         $query = "DELETE FROM KEBABS_INGREDIENTES WHERE id_kebab = :idKebab";
@@ -117,7 +138,8 @@ class RepoKebab {
     }
 
     // Buscar kebabs por ingrediente
-    public function buscarPorIngrediente($idIngrediente) {
+    public function buscarPorIngrediente($idIngrediente)
+    {
         global $conexion;  // Usamos la conexión global desde gbd.php
         try {
             $query = "SELECT k.* FROM KEBABS k 
@@ -133,7 +155,8 @@ class RepoKebab {
     }
 
     // Eliminar un kebab
-    public function eliminarKebab($idKebab) {
+    public function eliminarKebab($idKebab)
+    {
         global $conexion;  // Usamos la conexión global desde gbd.php
         try {
             // Eliminar ingredientes relacionados
@@ -155,8 +178,3 @@ class RepoKebab {
     }
 }
 ?>
-
-
-
-
-

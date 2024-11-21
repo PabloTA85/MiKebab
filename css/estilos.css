@@ -1,0 +1,220 @@
+html, body {
+    height: 100%; /* Asegúrate de que ocupen todo el viewport */
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Coloca los elementos en columna */
+}
+
+main {
+    flex: 1; /* Permite que el contenido principal crezca y empuje el footer hacia abajo */
+}
+
+
+/* Estilos generales de la página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #9e9e9e; /* Gris claro */
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Header con gris más oscuro */
+.bg-intermediategray {
+    background-color: #616161; /* Gris más oscuro para el header */
+}
+
+/* Header y footer con texto blanco */
+header, footer {
+    color: white;
+}
+
+/* Logo en el header */
+header img {
+    max-width: 100px;
+}
+
+/* Navbar */
+.navbar {
+    z-index: 1000;
+    background-color: #34495e; /* Azul grisáceo más suave */
+}
+
+.bg-cover {
+    background-size: cover;
+    background-position: center;
+}
+
+/* Enlaces del navbar */
+.navbar-nav .nav-link {
+    color: white !important; /* Letras en blanco */
+    font-weight: bold;
+}
+
+/* Cambiar color de los botones del navbar a naranja cuando el ratón pasa sobre ellos */
+.navbar-nav .nav-link:hover {
+    color: orange !important; /* Cambia el color del texto a naranja */
+    background-color: transparent; /* Asegúrate que no haya un fondo no deseado */
+}
+
+/* Para mover los botones "Inicio" y "Menú" a la izquierda */
+.navbar-nav:first-child {
+    margin-left: 0 !important; /* Mueve los elementos del inicio al borde izquierdo */
+}
+
+/* Para mover los botones de "Iniciar sesión" y "Registrarse" a la derecha */
+.navbar-nav:last-child {
+    margin-left: auto; /* Empuja los botones de la derecha hacia la derecha */
+}
+
+footer {
+    background-color: #616161; /* Gris más oscuro */
+    color: white;
+    text-align: center;
+    padding: 15px;
+    width: 100%; /* Asegura que cubra toda la página */
+}
+
+
+footer p {
+    margin: 0;
+}
+
+/* Navbar-light */
+.navbar-light .navbar-nav .nav-link {
+    color: white; /* Letras en blanco */
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #ecf0f1; /* Blanco suave en hover */
+}
+
+.navbar-toggler-icon {
+    background-color: #ecf0f1; /* Blanco suave para el icono de la hamburguesa */
+}
+
+/* Estilos para el texto caligráfico */
+h1.text-center {
+    font-family: 'Dancing Script', cursive; /* Fuente caligráfica */
+    font-size: 3rem; /* Tamaño grande para el título */
+    color: #3e2723; /* Marrón oscuro para el texto */
+    text-align: center;
+    margin: 0;
+    flex-grow: 1; /* Para que se mantenga centrado */
+}
+
+/* Menú desplegable dentro del navbar */
+.nav-item.dropdown {
+    position: relative; /* Asegura que el menú se posicione relativo a su contenedor */
+}
+
+/* Menú desplegable con fondo naranja */
+.nav-item.dropdown .dropdown-menu {
+    display: none; /* Oculta el menú por defecto */
+    position: absolute;
+    top: 100%; /* Aparece justo debajo del botón */
+    left: 0;
+    background-color: #f39c12; /* Naranja como el color de los botones */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    z-index: 1050; /* Por encima del contenido */
+    padding: 0; /* Elimina el espacio interno */
+}
+
+/* Evitar que se ponga azul cuando se hace clic */
+.nav-item.dropdown .dropdown-menu:focus {
+    outline: none; /* Elimina el contorno azul que aparece al hacer clic */
+}
+
+/* Estilo para los items del menú desplegable */
+.nav-item.dropdown .dropdown-item {
+    color: white; /* Letras blancas */
+    padding: 10px 20px; /* Espaciado interno */
+    text-decoration: none; /* Sin subrayado */
+    display: block; /* Cada opción ocupa toda la línea */
+    font-weight: bold;
+    background-color: #f39c12; /* Asegura que las opciones tengan un fondo naranja */
+}
+
+/* Hover sobre los elementos del dropdown */
+.nav-item.dropdown .dropdown-item:hover {
+    background-color: #e67e22; /* Naranja más oscuro en hover */
+    color: #fff; /* Blanco puro */
+}
+
+/* Mostrar el menú cuando tiene la clase 'show' */
+.nav-item.dropdown .dropdown-menu.show {
+    display: block;
+}
+
+/* Navbar responsive */
+@media (max-width: 992px) {
+    .navbar-nav {
+        flex-direction: column; /* Muestra los elementos del menú en columna */
+    }
+
+    .navbar-nav .nav-item {
+        text-align: center; /* Centra los elementos */
+    }
+}
+
+/* Estilos adicionales para el icono de la hamburguesa */
+.navbar-toggler-icon {
+    background-color: #ecf0f1; /* Blanco suave */
+}
+
+/* Elimina el contorno azul al hacer clic */
+.nav-item.dropdown .dropdown-item:focus {
+    outline: none;
+    background-color: #f39c12; /* Mantiene el color naranja */
+}
+
+/* Cuando una opción es seleccionada, se mantiene el fondo naranja */
+.nav-item.dropdown .dropdown-item:active {
+    background-color: #f39c12; /* Naranja en clic */
+    color: white; /* Letras blancas */
+}
+
+/* Hover en las opciones del menú */
+.navbar-nav .nav-link:hover {
+    color: #f39c12; /* Naranja en hover */
+}
+
+/* Opciones de menú desplegable */
+.navbar-nav .dropdown-menu {
+    display: none;
+    background-color: #f39c12; /* Naranja para el menú */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.navbar-nav .dropdown-menu.show {
+    display: block;
+}
+
+.navbar-nav .dropdown-item {
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+}
+
+/* Elimina el contorno azul al hacer clic */
+.nav-item.dropdown .dropdown-item:focus {
+    outline: none;
+    background-color: #f39c12; /* Mantiene el color naranja */
+}
+
+.navbar-nav .dropdown-item:hover {
+    background-color: #e67e22; /* Naranja más oscuro en hover */
+    color: #fff;
+}
+.noPointer{
+    cursor:none;
+}

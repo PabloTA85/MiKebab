@@ -6,6 +6,8 @@ require_once __DIR__ . '/../Helpers/gbd.php';  // Incluye la conexión
 // Establecer encabezados para JSON y permitir CORS
 header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: http://www.mykebab.com");
+
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
@@ -36,7 +38,35 @@ switch ($method) {
         break;
 
     case 'POST':
-        if ($action === 'crearUsuario') {
+        if ($action === 'loginUsuario') {
+            // Verificar las credenciales de login
+            $data = json_decode(file_get_contents("php://input"), true);
+            if ($data && isset($data['usuario'], $data['pass'])) {
+                $usuario = $data['usuario'];
+                $pass = $data['pass'];
+                
+                // Llamar al método para autenticar al usuario
+                $respuesta = $usuariosRepo->autenticarUsuario($usuario, $pass);
+
+                if (isset($respuesta['error'])) {
+                    // Si hay un error (como usuario no encontrado o contraseña incorrecta)
+                    echo json_encode(['error' => $respuesta['error']]);
+                } else {
+                    // Si la autenticación es exitosa
+                    echo json_encode([
+                        'message' => 'Autenticación exitosa',
+                        'usuario' => [
+                            'id' => $respuesta['id'],
+                            'nombre' => $respuesta['nombre'],
+                            'usuario' => $respuesta['usuario'],
+                            'tipo' => $respuesta['tipo']
+                        ]
+                    ]);
+                }
+            } else {
+                echo json_encode(['error' => 'Datos inválidos para el login']);
+            }
+        } elseif ($action === 'crearUsuario') {
             // Crear un nuevo usuario
             $data = json_decode(file_get_contents("php://input"), true);
             if ($data) {
@@ -100,3 +130,4 @@ switch ($method) {
         break;
 }
 ?>
+

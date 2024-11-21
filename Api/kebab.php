@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../Repositorios/RepoKebab.php';  // Incluye la clase RepoKebab 
 require_once __DIR__ . '/../Helpers/gbd.php';  // Incluye la conexión
+require_once __DIR__ . '/../Repositorios/RepoKebabIngrediente.php';  
 
 // Establecer encabezados para JSON y permitir CORS
 header("Content-Type: application/json");
@@ -11,6 +12,7 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 // Crear instancia de RepoKebab con la conexión
 $kebabRepo = new RepoKebab($conexion);
+$kebabsIngredientesRepo = new RepoKebabsIngredientes($conexion);
 
 // Detectar el método de solicitud HTTP
 $method = $_SERVER['REQUEST_METHOD'];
@@ -24,16 +26,35 @@ switch ($method) {
         if ($action === 'obtenerKebabs') {
             // Obtener todos los kebabs
             echo json_encode($kebabRepo->obtenerKebabs());
-        } elseif ($action === 'buscarPorIngrediente') {
-            // Buscar kebabs por ingrediente
-            $idIngrediente = $_GET['id_ingrediente'] ?? null;
-            if ($idIngrediente) {
-                echo json_encode($kebabRepo->buscarPorIngrediente($idIngrediente));
+        } elseif ($action === 'obtenerKebab') {
+            // Obtener un kebab específico por ID
+            $idKebab = $_GET['id'] ?? null;
+            if ($idKebab) {
+                $kebab = $kebabRepo->obtenerKebabPorId($idKebab);
+                if ($kebab) {
+                    echo json_encode($kebab);
+                } else {
+                    echo json_encode(['error' => 'Kebab no encontrado']);
+                }
             } else {
-                echo json_encode(['error' => 'ID de ingrediente es requerido']);
+                echo json_encode(['error' => 'ID de kebab es requerido']);
+            }
+        } elseif ($action === 'obtenerIngredientes') {
+            // Obtener los ingredientes de un kebab específico por ID
+            $idKebab = $_GET['idKebab'] ?? null;
+            if ($idKebab) {
+                $ingredientes = $kebabsIngredientesRepo->obtenerIngredientesDeKebab($idKebab);
+                if ($ingredientes) {
+                    echo json_encode($ingredientes);
+                } else {
+                    echo json_encode(['error' => 'Ingredientes no encontrados para este kebab']);
+                }
+            } else {
+                echo json_encode(['error' => 'ID de kebab es requerido para obtener ingredientes']);
             }
         }
         break;
+
 
     case 'POST':
         if ($action === 'crearKebab') {

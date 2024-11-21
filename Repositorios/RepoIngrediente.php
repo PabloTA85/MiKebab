@@ -12,7 +12,7 @@ class RepoIngrediente {
 
     public function obtenerIngredientes() {
         try {
-            $consulta = $this->conexion->prepare("SELECT * FROM kebab.ingredientes i
+            $consulta = $this->conexion->prepare("SELECT i.*, a.nombre as alergeno FROM kebab.ingredientes i
                                                     INNER JOIN kebab.ingredientes_alergenos ia ON i.idIngrediente = ia.idIngrediente
                                                     INNER JOIN kebab.alergenos a ON ia.idAlergeno = a.idAlergeno");
             $consulta->execute();

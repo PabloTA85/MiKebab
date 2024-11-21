@@ -1,0 +1,204 @@
+/* Ajustes generales */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Fondo de la página más suave */
+}
+
+/* Estilo para el título */
+h1 {
+    color: #FFA500; /* Naranja */
+    text-align: center;
+    margin-top: 20px;
+    font-size: 60px; /* Título más grande */
+    font-weight: bold;
+}
+
+/* Contenedor general */
+.contenedor {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite que los kebabs se ajusten en varias filas */
+    gap: 40px; /* Más espacio entre los elementos */
+    padding: 20px;
+    width: 100%;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-dialog {
+    background: white;
+    border-radius: 12px;
+    width: 80%;
+    padding: 30px;
+    max-height: 80%;
+    overflow-y: auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.modal-body .col-md-6 img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Contenedor de kebab */
+.kebab-item {
+    background: #f4f4f4;
+    border-radius: 8px; /* Borde menos redondeado */
+    padding: 20px; /* Aumento el padding para un contenedor más compacto */
+    box-shadow: none;
+    text-align: center;
+    transition: transform 0.3s ease;
+    width: 100%;
+    max-width: 600px; /* Aumento el ancho del contenedor */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Efecto hover para el kebab */
+.kebab-item:hover {
+    transform: translateY(-10px); /* Menos elevación al hacer hover */
+}
+
+/* Ajustar el tamaño de la imagen dentro del kebab */
+.kebab-item img {
+    width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+    height: 400px; /* Ajuste de la altura para adaptarse al nuevo ancho */
+    object-fit: cover;
+    border-bottom: none;
+}
+
+
+/* Ingredientes disponibles y actuales */
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-group-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-left: 10px;
+}
+
+/* Mostrar modal */
+.modal.abierto {
+    display: flex;
+}
+
+/* Estilo para la fila */
+.fila {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    gap: 30px; /* Espacio entre los elementos */
+    justify-content: center;
+    max-width: 1600px; /* Más espacio para los elementos */
+    width: 100%;
+}
+
+/* Estilo para los botones */
+button {
+    background-color: #5D6D7E;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px; /* Aumentar el tamaño de los botones */
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto hover: cambiar el fondo a naranja */
+button:hover {
+    background-color: #f39c12; /* Naranja */
+}
+
+/* Estilo específico para el botón "Añadir" */
+.btn-success {
+    background-color: #5D6D7E; /* Azul más suave */
+    border-color: #2c3e50; /* Gris más oscuro */
+}
+
+/* Estilo específico para el botón "Modificar" */
+.btn-primary {
+    background-color: #5D6D7E; /* Azul más suave */
+    border-color: #2c3e50; /* Gris más oscuro */
+}
+
+/* Efecto hover para los botones específicos */
+.btn-success:hover {
+    background-color: #f39c12; /* Naranja */
+}
+
+.btn-primary:hover {
+    background-color: #f39c12; /* Naranja */
+}
+
+/* Estilo de la lista de ingredientes */
+.ingredients-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+/* Cajitas para los ingredientes */
+.ingredient {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 12px 16px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px; /* Aumentar el tamaño de la fuente */
+    white-space: nowrap;
+    transition: transform 0.2s, background-color 0.2s ease;
+    display: inline-block;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ingredient:hover {
+    background-color: #ff9800;
+    color: #fff;
+    transform: scale(1.1); /* Aumentar el tamaño en hover */
+}
+
+/* Estilo para ingredientes seleccionados */
+.selected-ingredient {
+    background-color: #ff9800;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
